@@ -1,0 +1,7 @@
+*.so
+*.o
+*.pcm
+*.cxx
+SabreCal
+
+!.gitignore
