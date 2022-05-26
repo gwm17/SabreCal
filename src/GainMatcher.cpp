@@ -50,7 +50,7 @@ namespace SabreCal {
 			{
 				count = 0;
 				flushes++;
-				std::cout<<"\rPercent of data processed: "<<flush_percent*flushes*100.0f<<"%"<<std::endl;
+				std::cout<<"\rPercent of data processed: "<<flush_percent*flushes*100.0f<<"%"<<std::flush;
 			}
 
 			for(int j=0; j<5; j++)
@@ -104,7 +104,7 @@ namespace SabreCal {
 		graph_array.resize(m_totalChannels);
 
 		//Make all of the wedge graphs, and get the gain match parameters
-		for(size_t i=0; i<m_firstRing; i++)
+		for(int i=0; i<m_firstRing; i++)
 		{
 			if(m_data[i].x.size() != 0)
 			{
@@ -120,7 +120,7 @@ namespace SabreCal {
 		}
 
 		//Now do rings, after applying parameters from wedges
-		for(size_t i=m_firstRing; i<m_totalChannels; i++)
+		for(int i=m_firstRing; i<m_totalChannels; i++)
 		{
 			if(m_data[i].x.size() != 0)
 			{
