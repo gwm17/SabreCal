@@ -1,0 +1,10 @@
+GainDataFile: /Volumes/Wyndle/10B3He_May2022/merged/run_80_89.root
+GainPlotFile: /Volumes/Wyndle/10B3He_May2022/histograms/alphaCalSpectra.root
+CalibrationDataFile: /Volumes/Wyndle/10B3He_May2022/raw_root/compass_run_2.root
+CalibrationPlotFile: /Volumes/Wyndle/10B3He_May2022/histograms/calPlots.root
+InputData: /Volumes/Wyndle/10B3He_May2022/merged/run_53_143.root
+OutputData: /Volumes/Wyndle/10B3He_May2022/calibrated/run_53_149_cal.root
+GainMatchFile: /Volumes/Wyndle/10B3He_May2022/cal_files/gains_053022.txt
+CalibrationFile: /Volumes/Wyndle/10B3He_May2022/cal_files/cals_053022.txt
+ChannelMap: ./etc/ChannelMap_May2022_SABRE.txt
+RingToMatch: 12 WedgeToMatch: 1
