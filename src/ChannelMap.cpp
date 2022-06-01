@@ -14,6 +14,8 @@ namespace SabreCal {
 		Init(mapfile);
 	}
 
+	ChannelMap::~ChannelMap() {}
+
 	void ChannelMap::Init(const std::string& mapfile)
 	{
 		m_isValid = false;

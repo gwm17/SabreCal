@@ -108,10 +108,10 @@ namespace SabreCal {
 		{
 			if(m_data[i].x.size() != 0)
 			{
-				graph_array[i] = new TGraph(m_data[i].x.size(), &(m_data[i].x[0]), &(m_data[i].y[0]));
+				graph_array[i] = new TGraph(m_data[i].x.size(), m_data[i].x.data(), m_data[i].y.data());
 				graph_array[i]->SetName(m_data[i].name.c_str());
 				graph_array[i]->SetTitle(m_data[i].title.c_str());
-				auto result = graph_array[i]->Fit("pol1","R|ROB|Q+");
+				auto result = graph_array[i]->Fit("pol1","S|ROB|Q+");
 				m_params[i].slope = result->Parameter(1);
 				m_params[i].offset = result->Parameter(0);
 			}
@@ -133,7 +133,7 @@ namespace SabreCal {
 				graph_array[i] = new TGraph(m_data[i].x.size(), &(m_data[i].x[0]), &(m_data[i].y[0]));
 				graph_array[i]->SetName(m_data[i].name.c_str());
 				graph_array[i]->SetTitle(m_data[i].title.c_str());
-				auto result = graph_array[i]->Fit("pol1","R|ROB|Q+");
+				auto result = graph_array[i]->Fit("pol1","S|ROB|Q+");
 				m_params[i].slope = result->Parameter(1);
 				m_params[i].offset = result->Parameter(0);				
 			}

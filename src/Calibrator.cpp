@@ -32,6 +32,12 @@ namespace SabreCal {
         }
         
         TTree* tree = (TTree*) input->Get("Data");
+	if(tree == nullptr)
+	{
+		std::cerr<<"ERR -- Unable to find tree Data at Calibrator::Run()"<<std::endl;
+		return;
+	}
+
         uint16_t energy, board, channel;
         tree->SetBranchAddress("Energy", &energy);
         tree->SetBranchAddress("Board", &board);
@@ -47,7 +53,7 @@ namespace SabreCal {
         for(int i=0; i<s_totalChannels; i++)
         {
             std::string name = "channel"+std::to_string(i);
-            histograms.emplace_back(name.c_str(), name.c_str(), 16384, 0.0, 16384.0);
+            histograms.emplace_back(name.c_str(), name.c_str(), 4096, 0.0, 16384.0);
         }
         
         for(uint64_t i=0; i<nentries; i++)
@@ -65,7 +71,7 @@ namespace SabreCal {
             auto& params = m_gainMap.GetParameters(gchan);
             
             if(energy > 100.0) //Reject electronic noise
-                histograms[i].Fill(params.slope*(energy*s_gainFactor) + params.offset);
+                histograms[gchan].Fill(params.slope*(energy*s_gainFactor) + params.offset);
         }
         std::cout<<std::endl;
         input->Close();

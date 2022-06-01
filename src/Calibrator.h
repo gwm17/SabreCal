@@ -27,7 +27,7 @@ namespace SabreCal {
         GainMap m_gainMap;
         std::vector<Parameters> m_params;
         
-        static constexpr int s_totalChannels = 127; //Total channels in SABRE
+        static constexpr int s_totalChannels = 128; //Total channels in SABRE
         static constexpr double s_241Am_alphaKE = 5.468; //MeV
         static constexpr double s_gainFactor = 1.5; //For if you're dumb and the electronics gain needs adjusted
     };

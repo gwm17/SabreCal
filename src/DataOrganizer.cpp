@@ -69,11 +69,15 @@ namespace SabreCal {
             
             //copy FP crap
             outevent.xavg = inevent->xavg;
+			outevent.x1 = inevent->x1;
+			outevent.x2 = inevent->x2;
             outevent.scintE = inevent->scintLeft;
             outevent.cathodeE = inevent->cathode;
             outevent.anodeFrontE = inevent->anodeFront;
             outevent.anodeBackE = inevent->anodeBack;
             outevent.scintT = inevent->scintLeftTime;
+	    	//Reset outevent SABRE data
+	    	outevent.sabre.clear();
             
             for(int j=0; j<5; j++)
             {
@@ -139,6 +143,7 @@ namespace SabreCal {
                     }
                 }
             }
+            std::sort(outevent.sabre.begin(), outevent.sabre.end(), [](const SabrePair& p1, const SabrePair& p2){ return p1.ringE > p2.ringE; });
             outtree->Fill();
         }
         std::cout<<std::endl;
@@ -155,7 +160,7 @@ namespace SabreCal {
         std::cout<<"Total number of SABRE hits: "<<m_stats.totalSabreHits<<std::endl;
         std::cout<<"Total number of good SABRE hits: "<<m_stats.goodSabreHits<<std::endl;
         std::cout<<"Number of ring/wedge pairs made: "<<m_stats.pairsMade<<std::endl;
-        std::cout<<"Matching efficiency percentage: "<<((double)m_stats.pairsMade)/m_stats.goodSabreHits<<std::endl;
+        std::cout<<"Matching efficiency percentage: "<<((double)m_stats.pairsMade*2.0)/m_stats.goodSabreHits<<std::endl;
         std::cout<<"Number of hits below threshold: "<<m_stats.sabreBelowThreshold<<std::endl;
         std::cout<<"Number of wedge fragments: "<<m_stats.sabreWedgeFrags<<std::endl;
         std::cout<<"Number of ring fragments: "<<m_stats.sabreRingFrags<<std::endl;

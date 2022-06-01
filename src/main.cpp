@@ -38,7 +38,13 @@ int main(int argc, const char** argv)
         option = argv[1];
     }
     
-    std::ifstream input(argv[1]);
+    std::ifstream input(inputfile);
+    if(!input.is_open())
+    {
+	std::cerr<<"ERR -- Unable to open input config file "<<inputfile<<std::endl;
+	return 1;
+    }
+
     std::string junk;
     
     std::string gaindata, caldata, inputdata, outputdata;
