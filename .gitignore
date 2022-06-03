@@ -3,5 +3,7 @@
 *.pcm
 *.cxx
 SabreCal
+SabreCal.code-workspace
+./build/
 
 !.gitignore
